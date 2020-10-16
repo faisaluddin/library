@@ -1,0 +1,21 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Authors</h1>
+  {% if author_list %}
+  <ul>
+    {% for object in object_list %}
+      <li>
+      <a href="{% url 'author-detail' pk=object.id %}"><span>{{object.last_name}} {{object.first_name}}</span>
+        (<span>{{object.date_of_birth}} -</span>
+        {% if object.date_of_death %}
+            <span>{{object.date_of_death}}</span>
+        {% endif %})</a>
+        
+      </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>There are no authors.</p>
+  {% endif %}       
+{% endblock %}
